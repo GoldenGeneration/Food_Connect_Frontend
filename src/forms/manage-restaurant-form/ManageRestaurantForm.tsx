@@ -31,13 +31,13 @@ const formSchema = z
       required_error: "estimated delivery time is required",
       invalid_type_error: "must be a valid number",
     }),
-    cuisines: z.array(z.string()).nonempty({
+    foodCategory: z.array(z.string()).nonempty({
       message: "please select at least one item",
     }),
     menuItems: z.array(
       z.object({
         name: z.string().min(1, "name is required"),
-        price: z.coerce.number().min(1, "price is required"),
+        foodWeight: z.coerce.number().min(1, "weight is required"),
       })
     ),
     imageUrl: z.string().optional(),
@@ -60,8 +60,8 @@ const ManageRestaurantForm = ({ onSave, isLoading, restaurant }: Props) => {
   const form = useForm<RestaurantFormData>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      cuisines: [],
-      menuItems: [{ name: "", price: 0 }],
+      foodCategory: [],
+      menuItems: [{ name: "", foodWeight: 0 }],
     },
   });
 
@@ -70,14 +70,14 @@ const ManageRestaurantForm = ({ onSave, isLoading, restaurant }: Props) => {
       return;
     }
 
-    // price lowest domination of 100 = 100pence == 1GBP
+    // price $1 = Rs.100
     const deliveryPriceFormatted = parseInt(
       (restaurant.deliveryPrice / 100).toFixed(2)
     );
 
     const menuItemsFormatted = restaurant.menuItems.map((item) => ({
       ...item,
-      price: parseInt((item.price / 100).toFixed(2)),
+      foodWeight: parseInt((item.foodWeight / 100).toFixed(2)),
     }));
 
     const updatedRestaurant = {
@@ -104,14 +104,14 @@ const ManageRestaurantForm = ({ onSave, isLoading, restaurant }: Props) => {
       "estimatedDeliveryTime",
       formDataJson.estimatedDeliveryTime.toString()
     );
-    formDataJson.cuisines.forEach((cuisine, index) => {
-      formData.append(`cuisines[${index}]`, cuisine);
+    formDataJson.foodCategory.forEach((foodCategory, index) => {
+      formData.append(`foodCategory[${index}]`, foodCategory);
     });
     formDataJson.menuItems.forEach((menuItem, index) => {
       formData.append(`menuItems[${index}][name]`, menuItem.name);
       formData.append(
-        `menuItems[${index}][price]`,
-        (menuItem.price * 100).toString()
+        `menuItems[${index}][foodWeight]`,
+        (menuItem.foodWeight * 100).toString()
       );
     });
 

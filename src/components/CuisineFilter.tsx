@@ -1,4 +1,4 @@
-import { cuisineList } from "@/config/restaurant-options-config";
+import { FoodList } from "@/config/restaurant-options-config";
 import { Label } from "./ui/label";
 import { Check, ChevronDown, ChevronUp } from "lucide-react";
 import { ChangeEvent } from "react";
@@ -43,8 +43,8 @@ const CuisineFilter = ({
       </div>
 
       <div className="space-y-2 flex flex-col">
-        {cuisineList
-          .slice(0, isExpanded ? cuisineList.length : 7)
+        {FoodList
+          .slice(0, isExpanded ? FoodList.length : 7)
           .map((cuisine) => {
             const isSelected = selectedCuisines.includes(cuisine);
             return (
