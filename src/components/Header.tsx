@@ -8,9 +8,9 @@ const Header = () => {
       <div className="container mx-auto flex justify-between items-center">
         <Link
           to="/"
-          className="text-3xl font-bold tracking-tight text-orange-500"
+          className="text-3xl font-bold tracking-tight text-yellow-500"
         >
-          MernEats.com
+          FoodConnect
         </Link>
         <div className="md:hidden">
           <MobileNav />

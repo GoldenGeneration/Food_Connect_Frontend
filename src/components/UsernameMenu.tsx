@@ -16,8 +16,21 @@ const UsernameMenu = () => {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger className="flex items-center px-3 font-bold hover:text-orange-500 gap-2">
-        <CircleUserRound className="text-orange-500" />
         {user?.email}
+        {user?.picture ? (
+          <img
+            src={user.picture}
+            alt="Profile"
+            className="w-8 h-8 rounded-full"
+            onError={(e) => { 
+              const target = e.target as HTMLImageElement;
+              target.onerror = null; 
+              target.src = "/default-avatar.png"; 
+            }}
+          />  
+        ) : (
+          <CircleUserRound className="text-orange-500" />
+        )}
       </DropdownMenuTrigger>
       <DropdownMenuContent>
         <DropdownMenuItem>

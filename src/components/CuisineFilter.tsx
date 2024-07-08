@@ -5,7 +5,7 @@ import { ChangeEvent } from "react";
 import { Button } from "./ui/button";
 
 type Props = {
-  onChange: (cuisines: string[]) => void;
+  onChange: (foodCategory: string[]) => void;
   selectedCuisines: string[];
   isExpanded: boolean;
   onExpandedClick: () => void;
@@ -23,7 +23,7 @@ const CuisineFilter = ({
 
     const newCuisinesList = isChecked
       ? [...selectedCuisines, clickedCuisine]
-      : selectedCuisines.filter((cuisine) => cuisine !== clickedCuisine);
+      : selectedCuisines.filter((foodCategory) => foodCategory !== clickedCuisine);
 
     onChange(newCuisinesList);
   };
@@ -33,7 +33,7 @@ const CuisineFilter = ({
   return (
     <>
       <div className="flex justify-between items-center px-2">
-        <div className="text-md font-semibold mb-2">Filter By Cuisine</div>
+        <div className="text-md font-semibold mb-2">Filter By Category</div>
         <div
           onClick={handleCuisinesReset}
           className="text-sm font-semibold mb-2 underline cursor-pointer text-blue-500"
@@ -44,21 +44,21 @@ const CuisineFilter = ({
 
       <div className="space-y-2 flex flex-col">
         {FoodList
-          .slice(0, isExpanded ? FoodList.length : 7)
-          .map((cuisine) => {
-            const isSelected = selectedCuisines.includes(cuisine);
+          .slice(0, isExpanded ? FoodList.length : 3)
+          .map((foodCategory) => {
+            const isSelected = selectedCuisines.includes(foodCategory);
             return (
-              <div className="flex">
+              <div className="flex" key={foodCategory}>
                 <input
-                  id={`cuisine_${cuisine}`}
+                  id={`foodCategory_${foodCategory}`}
                   type="checkbox"
                   className="hidden"
-                  value={cuisine}
+                  value={foodCategory}
                   checked={isSelected}
                   onChange={handleCuisinesChange}
                 />
                 <Label
-                  htmlFor={`cuisine_${cuisine}`}
+                  htmlFor={`foodCategory_${foodCategory}`}
                   className={`flex flex-1 items-center cursor-pointer text-sm rounded-full px-4 py-2 font-semibold ${
                     isSelected
                       ? "border border-green-600 text-green-600"
@@ -66,7 +66,7 @@ const CuisineFilter = ({
                   }`}
                 >
                   {isSelected && <Check size={20} strokeWidth={3} />}
-                  {cuisine}
+                  {foodCategory}
                 </Label>
               </div>
             );

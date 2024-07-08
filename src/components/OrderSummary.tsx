@@ -14,7 +14,7 @@ type Props = {
 const OrderSummary = ({ restaurant, cartItems, removeFromCart }: Props) => {
   const getTotalCost = () => {
     const totalInPence = cartItems.reduce(
-      (total, cartItem) => total + cartItem.price * cartItem.quantity,
+      (total, cartItem) => total + cartItem.foodWeight * cartItem.quantity,
       0
     );
 
@@ -47,7 +47,7 @@ const OrderSummary = ({ restaurant, cartItems, removeFromCart }: Props) => {
                 size={20}
                 onClick={() => removeFromCart(item)}
               />
-              £{((item.price * item.quantity) / 100).toFixed(2)}
+              £{((item.foodWeight * item.quantity) / 100).toFixed(2)}
             </span>
           </div>
         ))}

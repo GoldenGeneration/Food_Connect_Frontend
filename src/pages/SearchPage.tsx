@@ -68,7 +68,7 @@ const SearchPage = () => {
   };
 
   if (isLoading) {
-    <span>Loading ...</span>;
+     <span>Loading ...</span>;
   }
 
   if (!results?.data || !city) {
@@ -77,7 +77,7 @@ const SearchPage = () => {
 
   return (
     <div className="grid grid-cols-1 lg:grid-cols-[250px_1fr] gap-5">
-      <div id="cuisines-list">
+      <div id="foodCategory-list">
         <CuisineFilter
           selectedCuisines={searchState.selectedCuisines}
           onChange={setSelectedCuisines}
@@ -91,7 +91,7 @@ const SearchPage = () => {
         <SearchBar
           searchQuery={searchState.searchQuery}
           onSubmit={setSearchQuery}
-          placeHolder="Search by Cuisine or Restaurant Name"
+          placeHolder="Search by City Name"
           onReset={resetSearch}
         />
         <div className="flex justify-between flex-col gap-3 lg:flex-row">
@@ -103,7 +103,7 @@ const SearchPage = () => {
         </div>
 
         {results.data.map((restaurant) => (
-          <SearchResultCard restaurant={restaurant} />
+          <SearchResultCard key={restaurant._id} restaurant={restaurant} />
         ))}
         <PaginationSelector
           page={results.pagination.page}

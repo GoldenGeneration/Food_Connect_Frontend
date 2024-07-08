@@ -46,12 +46,12 @@ export const useSearchRestaurants = (
     if (!response.ok) {
       throw new Error("Failed to get restaurant");
     }
-
+  
     return response.json();
   };
 
   const { data: results, isLoading } = useQuery(
-    ["searchRestaurants", searchState],
+    ["searchRestaurants", searchState], 
     createSearchRequest,
     { enabled: !!city }
   );

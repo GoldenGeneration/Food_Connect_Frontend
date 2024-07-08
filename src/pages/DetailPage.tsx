@@ -14,7 +14,7 @@ import { useCreateCheckoutSession } from "@/api/OrderApi";
 export type CartItem = {
   _id: string;
   name: string;
-  price: number;
+  foodWeight: number;
   quantity: number;
 };
 
@@ -49,7 +49,7 @@ const DetailPage = () => {
           {
             _id: menuItem._id,
             name: menuItem.name,
-            price: menuItem.price,
+            foodWeight: menuItem.foodWeight,
             quantity: 1,
           },
         ];
