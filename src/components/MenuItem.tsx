@@ -1,4 +1,4 @@
-import { MenuItem } from "../types";
+import type { MenuItem } from "../types";
 import { Card, CardContent, CardHeader, CardTitle } from "./ui/card";
 
 type Props = {
@@ -13,7 +13,7 @@ const MenuItem = ({ menuItem, addToCart }: Props) => {
         <CardTitle>{menuItem.name}</CardTitle>
       </CardHeader>
       <CardContent className="font-bold">
-        £{(menuItem.foodWeight / 100).toFixed(2)}
+        {(menuItem.foodWeight / 100).toFixed(2)} Kg
       </CardContent>
     </Card>
   );

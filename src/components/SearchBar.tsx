@@ -8,7 +8,9 @@ import { Button } from "./ui/button";
 import { useEffect } from "react";
 
 const formSchema = z.object({
-  searchQuery: z.string().min(1, "Restaurant name is required"),
+  searchQuery: z.string({
+    required_error: "Restaurant name is required",
+  }),
 });
 
 export type SearchForm = z.infer<typeof formSchema>;
@@ -20,7 +22,7 @@ type Props = {
   searchQuery?: string;
 };
 
-const SearchBar = ({ onSubmit, onReset, placeHolder, searchQuery = '' }: Props) => {
+const SearchBar = ({ onSubmit, onReset, placeHolder, searchQuery }: Props) => {
   const form = useForm<SearchForm>({
     resolver: zodResolver(formSchema),
     defaultValues: {
