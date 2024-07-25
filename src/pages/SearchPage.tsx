@@ -1,7 +1,7 @@
 import { useSearchRestaurants } from "@/api/RestaurantApi";
 import CuisineFilter from "@/components/CuisineFilter";
 import PaginationSelector from "@/components/PaginationSelector";
-import SearchBar, { SearchForm } from "@/components/SearchBar";
+// import SearchBar, { SearchForm } from "@/components/SearchBar";
 import SearchResultCard from "@/components/SearchResultCard";
 import SearchResultInfo from "@/components/SearchResultInfo";
 import SortOptionDropdown from "@/components/SortOptionDropdown";
@@ -51,21 +51,21 @@ const SearchPage = () => {
     }));
   };
 
-  const setSearchQuery = (searchFormData: SearchForm) => {
-    setSearchState((prevState) => ({
-      ...prevState,
-      searchQuery: searchFormData.searchQuery,
-      page: 1,
-    }));
-  };
+  // const setSearchQuery = (searchFormData: SearchForm) => {
+  //   setSearchState((prevState) => ({
+  //     ...prevState,
+  //     searchQuery: searchFormData.searchQuery,
+  //     page: 1,
+  //   }));
+  // };
 
-  const resetSearch = () => {
-    setSearchState((prevState) => ({
-      ...prevState,
-      searchQuery: "",
-      page: 1,
-    }));
-  };
+  // const resetSearch = () => {
+  //   setSearchState((prevState) => ({
+  //     ...prevState,
+  //     searchQuery: "",
+  //     page: 1,
+  //   }));
+  // };
 
   if (isLoading) {
      <span>Loading ...</span>;
@@ -88,12 +88,12 @@ const SearchPage = () => {
         />
       </div>
       <div id="main-content" className="flex flex-col gap-5">
-        <SearchBar
+        {/* <SearchBar
           searchQuery={searchState.searchQuery}
           onSubmit={setSearchQuery}
           placeHolder="Search by City Name"
           onReset={resetSearch}
-        />
+        /> */}
         <div className="flex justify-between flex-col gap-3 lg:flex-row">
           <SearchResultInfo total={results.pagination.total} city={city} />
           <SortOptionDropdown
