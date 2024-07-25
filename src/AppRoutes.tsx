@@ -55,7 +55,7 @@ const AppRoutes = () => {
           }
         />
         <Route
-          path="/manage-restaurant"
+          path="/provider"
           element={
             <Layout>
               <ManageRestaurantPage />

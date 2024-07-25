@@ -23,11 +23,24 @@ const MobileNav = () => {
         <SheetTitle>
           {isAuthenticated ? (
             <span className="flex items-center font-bold gap-2">
-              <CircleUserRound className="text-orange-500" />
+              {user?.picture ? (
+                <img
+                  src={user.picture}
+                  alt="Profile"
+                  className="w-8 h-8 rounded-full"
+                  onError={(e) => { 
+                    const target = e.target as HTMLImageElement;
+                    target.onerror = null; 
+                    target.src = "/default-avatar.png"; 
+                  }}
+                />  
+                ) : (
+                  <CircleUserRound className="text-orange-500" />
+              )}
               {user?.email}
             </span>
           ) : (
-            <span> Welcome to MernEats.com!</span>
+            <span>Welcome to Food Connect</span>
           )}
         </SheetTitle>
         <Separator />

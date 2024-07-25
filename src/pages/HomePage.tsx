@@ -16,11 +16,11 @@ const HomePage = () => {
     <div className="flex flex-col gap-12">
       <div className="md:px-32 bg-white rounded-lg shadow-md py-8 flex flex-col gap-5 text-center -mt-16">
         <h1 className="text-5xl font-bold tracking-tight text-orange-600">
-          Donate and Save  From Hunger
+          End Hunger, One Meal at a Time
         </h1>
-        <span className="text-xl">Food is Life</span>
+        <span className="text-xl">Our generosity spreads smile</span>
         <SearchBar
-          placeHolder="Search by City or Town"
+          placeHolder="Search by City"
           onSubmit={handleSearchSubmit}
         />
       </div>
@@ -28,10 +28,10 @@ const HomePage = () => {
         <img src={landingImage} style={{ width: '300px', height: '300px', margin: 'auto', display: 'block' }}/>
         <div className="flex flex-col items-center justify-center gap-4 text-center">
           <span className="font-bold text-3xl tracking-tighter">
-            Even Better Support
+            With Even Better Support
           </span>
           <span>
-            Comming Soon
+            Comming Soon!!!
           </span>
           <img src={appDownloadImage} />
         </div>

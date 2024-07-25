@@ -12,23 +12,22 @@ type Props = {
 };
 
 const OrderSummary = ({ restaurant, cartItems, removeFromCart }: Props) => {
-  const getTotalCost = () => {
-    const totalInPence = cartItems.reduce(
-      (total, cartItem) => total + cartItem.foodWeight * cartItem.quantity,
-      0
-    );
+  // const getTotalCost = () => {
+  //   const totalInPence = cartItems.reduce(
+  //     (total, cartItem) => total + cartItem.foodWeight * cartItem.quantity,
+  //     0
+  //   );
 
-    const totalWithDelivery = totalInPence + restaurant.deliveryPrice;
+  //   const totalWithDelivery = totalInPence + restaurant.deliveryPrice;
 
-    return (totalWithDelivery / 100).toFixed(2);
-  };
+  //   return (totalWithDelivery / 100).toFixed(2);
+  // };
 
   return (
     <>
       <CardHeader>
         <CardTitle className="text-2xl font-bold tracking-tight flex justify-between">
           <span>Your Order</span>
-          <span>£{getTotalCost()}</span>
         </CardTitle>
       </CardHeader>
       <CardContent className="flex flex-col gap-5">
@@ -41,20 +40,20 @@ const OrderSummary = ({ restaurant, cartItems, removeFromCart }: Props) => {
               {item.name}
             </span>
             <span className="flex items-center gap-1">
+              {((item.foodWeight * item.quantity) / 100).toFixed(2)} Kg
               <Trash
                 className="cursor-pointer"
                 color="red"
                 size={20}
                 onClick={() => removeFromCart(item)}
               />
-              £{((item.foodWeight * item.quantity) / 100).toFixed(2)}
             </span>
           </div>
         ))}
         <Separator />
         <div className="flex justify-between">
-          <span>Delivery</span>
-          <span>£{(restaurant.deliveryPrice / 100).toFixed(2)}</span>
+          <span>Delivery Charge</span>
+          <span>Rs.{(restaurant.deliveryPrice / 100).toFixed(2)}</span>
         </div>
         <Separator />
       </CardContent>

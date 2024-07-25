@@ -10,7 +10,7 @@ const Header = () => {
           to="/"
           className="text-3xl font-bold tracking-tight text-yellow-500"
         >
-          FoodConnect
+          Food Connect
         </Link>
         <div className="md:hidden">
           <MobileNav />

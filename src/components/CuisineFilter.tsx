@@ -5,7 +5,7 @@ import { ChangeEvent } from "react";
 import { Button } from "./ui/button";
 
 type Props = {
-  onChange: (foodCategory: string[]) => void;
+  onChange: (cuisines: string[]) => void;
   selectedCuisines: string[];
   isExpanded: boolean;
   onExpandedClick: () => void;
@@ -23,7 +23,7 @@ const CuisineFilter = ({
 
     const newCuisinesList = isChecked
       ? [...selectedCuisines, clickedCuisine]
-      : selectedCuisines.filter((foodCategory) => foodCategory !== clickedCuisine);
+      : selectedCuisines.filter((cuisine) => cuisine !== clickedCuisine); // Changed variable name to 'cuisine'
 
     onChange(newCuisinesList);
   };
@@ -44,21 +44,21 @@ const CuisineFilter = ({
 
       <div className="space-y-2 flex flex-col">
         {FoodList
-          .slice(0, isExpanded ? FoodList.length : 3)
-          .map((foodCategory) => {
-            const isSelected = selectedCuisines.includes(foodCategory);
+          .slice(0, isExpanded ? FoodList.length : 7)
+          .map((cuisine) => {  // Renamed variable to avoid conflict with FoodList
+            const isSelected = selectedCuisines.includes(cuisine);
             return (
-              <div className="flex" key={foodCategory}>
+              <div className="flex" key={cuisine}>  {/* Added key prop */}
                 <input
-                  id={`foodCategory_${foodCategory}`}
+                  id={`cuisine_${cuisine}`}
                   type="checkbox"
                   className="hidden"
-                  value={foodCategory}
+                  value={cuisine}
                   checked={isSelected}
                   onChange={handleCuisinesChange}
                 />
                 <Label
-                  htmlFor={`foodCategory_${foodCategory}`}
+                  htmlFor={`cuisine_${cuisine}`}
                   className={`flex flex-1 items-center cursor-pointer text-sm rounded-full px-4 py-2 font-semibold ${
                     isSelected
                       ? "border border-green-600 text-green-600"
@@ -66,7 +66,7 @@ const CuisineFilter = ({
                   }`}
                 >
                   {isSelected && <Check size={20} strokeWidth={3} />}
-                  {foodCategory}
+                  {cuisine}
                 </Label>
               </div>
             );
