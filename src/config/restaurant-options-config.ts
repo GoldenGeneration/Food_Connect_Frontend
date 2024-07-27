@@ -1,9 +1,11 @@
 export const FoodList = [
-  "Veg",
+  "Vegan",
   "Non-Veg",
   "Dairy",
   "Bakery",
   "Seafood",
   "Fruits",
-  "Organic"
+  "Organic",
+  "Vegetables",
+  "Packaged"
 ];
